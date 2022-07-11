@@ -3,10 +3,13 @@ import { connect } from 'react-redux'
 import MovieListItem from './MovieListItem';
 import { MovieData } from '../types/Search';
 import { RootStates } from '../types';
+import store from '../store';
 export const MovieList = ({ result, resultErr }: Props) => {
 
   return (
-    <div>MovieList</div>
+    <div>MovieList
+      {result?.map(item => <MovieListItem key={item.imdbID} movie={item} />)}
+    </div>
   )
 }
 
@@ -16,7 +19,7 @@ type StateToProps = {
 }
 type Props = StateToProps;
 
-const mapStateToProps = (state: { search: {result:MovieData[],resultErr:string} } ) => ({
+const mapStateToProps = (state: RootStates ) => ({
   result: state.search.result,
   resultErr: state.search.resultErr,
 })

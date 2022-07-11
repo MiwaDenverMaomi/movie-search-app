@@ -14,7 +14,7 @@ export const inputKeyword = (keyword:string) => {
   }
 };
 
-export const searchKeyword = (): ThunkAction<any, any,any,any> => async (dispatch: Dispatch) => {
+export const searchKeyword = (): ThunkAction<void, RootStates, undefined, RootActions> => async (dispatch: Dispatch) => {
   const result = await OMDB.get(`?s=${store.getState().search.keyword}&apikey=${apiKey}`).then(res => res).catch(err => {
     if (axios.isAxiosError(err)) {
       console.log('axios error');

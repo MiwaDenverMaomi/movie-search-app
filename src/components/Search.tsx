@@ -51,9 +51,10 @@ const mapStateToProps = (state:RootStates) => {
 }
 
 type AppDispatch = Dispatch;
-type AppThunkDispatch = ThunkDispatch<any, any, any>;
+type AppThunkDispatch = ThunkDispatch<RootStates, undefined, RootActions>;
+type DISPATCH=AppDispatch&AppThunkDispatch
 
-const mapDispatchToProps = (dispatch: AppThunkDispatch) => {//dispatchの定義をまとめるのがポイント
+const mapDispatchToProps = (dispatch: AppDispatch&AppThunkDispatch) => {//dispatchの定義をまとめるのがポイント
   return {
     inputKeyword: (keyword: string) => dispatch(inputKeyword(keyword)),//ここでの引数、引数の型づけをわすれない！dispatch()の中にも引数入れる！！！
     searchKeyword: () => dispatch(searchKeyword()),//thunkDispatchの場合は()=>これから始まる。

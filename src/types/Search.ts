@@ -14,7 +14,7 @@ export type MovieData = {
 
 export type SearchKeywordPayload = {
   data: {
-    Search?: MovieData[]|null|any,//ここをMovieData[]|nullにするとkeyword->neverエラーになる。
+    Search?: MovieData[]|null|any,//★ここをMovieData[]|nullにするとkeyword->neverエラーになる。
     Response?: string,
     Error?:string
   },
@@ -42,8 +42,8 @@ export interface ShowKeywordErrMsgAction extends Action {
 export type SearchActions = InputKeywordAction & ShowKeywordErrMsgAction & SearchKeywordAction;
 
 export type SearchStates = {
-    result:  any
+    result:  any|null,//★ここをMovieData[]|nullにするとエラーになる
     keyword: string,
-    resultErr: any | null,
-    keywordErr: any | null
+  resultErr: any | null,//★ここをString|nullにするとエラーになる
+  keywordErr: any | null//★ここをstrig[]|nullにするとエラーになる
 };
