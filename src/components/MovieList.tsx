@@ -3,13 +3,17 @@ import { connect } from 'react-redux'
 import MovieListItem from './MovieListItem';
 import { MovieData } from '../types/Search';
 import { RootStates } from '../types';
+import Grid from '@mui/material/Grid';
 import store from '../store';
 export const MovieList = ({ result, resultErr }: Props) => {
 
   return (
-    <div>MovieList
-      {result?.map(item => <MovieListItem key={item.imdbID} movie={item} />)}
-    </div>
+<>
+    <Grid container spacing={5}>{result?.map(item => <MovieListItem key={item.imdbID} movie={item} />)}
+    </Grid>
+    <div>{resultErr}</div>
+</>
+
   )
 }
 
