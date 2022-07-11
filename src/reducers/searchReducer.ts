@@ -19,17 +19,17 @@ const searchReducer = (state = initialState, action: RootActions) => {
       return { ...state,keyword:action.payload};
       break;
 
-    // case 'SEARCH_KEYWORD':
-    //   let keywordResult = null;
-    //   let keyword = '';
+    case 'SEARCH_KEYWORD':
+      let keywordResult = null;
+      let keyword = '';
 
-    //   if (action.payload === undefined) {
-    //     return { ...state, resultErr: 'Sorry! We could not find it!', result: null };
-    //   } else if (action.payload.data.Response === 'False') {
-    //     return { ...state, resultErr: action.payload.data.Error, result:null }
-    //   } else {
-    //     return { ...state, resultErr:null,result: action.payload.data.Search };
-    //   }
+      if (action.payload === undefined) {
+        return { ...state, resultErr: 'Sorry! We could not find it!', result: null };
+      } else if (action.payload.data.Response === 'False') {
+        return { ...state, resultErr: action.payload.data.Error, result:null }
+      } else {
+        return { ...state, resultErr:null,result: action.payload.data.Search };
+      }
 
     //   break;
     case 'SHOW_KEYWORD_ERR_MSG':

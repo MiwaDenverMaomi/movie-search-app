@@ -14,16 +14,16 @@ export const inputKeyword = (keyword:string) => {
   }
 };
 
-// export const searchKeyword = (): ThunkAction<any, any,any,any> => async (dispatch: Dispatch) => {
-//   const result = await OMDB.get(`?s=${store.getState().search.keyword}&apikey=${apiKey}`).then(res => res).catch(err => {
-//     if (axios.isAxiosError(err)) {
-//       console.log('axios error');
-//     }
-//     return err.response.data;
-//   });
-//   console.log(result)
-//   dispatch({ type: 'SEARCH_KEYWORD', payload: result });
-// }
+export const searchKeyword = (): ThunkAction<any, any,any,any> => async (dispatch: Dispatch) => {
+  const result = await OMDB.get(`?s=${store.getState().search.keyword}&apikey=${apiKey}`).then(res => res).catch(err => {
+    if (axios.isAxiosError(err)) {
+      console.log('axios error');
+    }
+    return err.response.data;
+  });
+  console.log(result)
+  dispatch({ type: 'SEARCH_KEYWORD', payload: result });
+}
 
 export const showKeywordErrMsg = (msg: string) => {
   return {

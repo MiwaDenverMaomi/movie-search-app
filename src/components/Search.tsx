@@ -2,19 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from '@reduxjs/toolkit';
 import { ThunkDispatch,ThunkAction } from 'redux-thunk';
-import { inputKeyword,showKeywordErrMsg } from '../actions/SearchActions';
+import { inputKeyword,showKeywordErrMsg,searchKeyword } from '../actions/SearchActions';
 import store from '../store';
 import { validRequired } from '../functions';
 import { RootStates, RootActions } from '../types';
 import { SearchStates } from '../types/Search';
 import { MovieData} from '../types/Search'
 
-export const Search = ({ keyword, keywordErr, inputKeyword,  showKeywordErrMsg }: Props) => {
+export const Search = ({ keyword, keywordErr, inputKeyword,  showKeywordErrMsg,searchKeyword }: Props) => {
 
   const handleClickSearch = () => {
     //validation
     if (validRequired(keyword)) {
-      // searchKeyword();
+      searchKeyword();
     } else {
       showKeywordErrMsg('Input title!');
     }
@@ -29,7 +29,7 @@ export const Search = ({ keyword, keywordErr, inputKeyword,  showKeywordErrMsg }
 
 type DispatchToProps = {//ここはRootActionは指定できない。
   inputKeyword: (e: any) => void,
-  // searchKeyword: ()=>void,
+  searchKeyword: ()=>void,
   showKeywordErrMsg: (msg:string)=>void
 }
 
@@ -56,7 +56,7 @@ type AppThunkDispatch = ThunkDispatch<any, any, any>;
 const mapDispatchToProps = (dispatch: AppThunkDispatch) => {//dispatchの定義をまとめるのがポイント
   return {
     inputKeyword: (keyword: string) => dispatch(inputKeyword(keyword)),//ここでの引数、引数の型づけをわすれない！dispatch()の中にも引数入れる！！！
-    // searchKeyword: () => dispatch(searchKeyword()),//thunkDispatchの場合は()=>これから始まる。
+    searchKeyword: () => dispatch(searchKeyword()),//thunkDispatchの場合は()=>これから始まる。
     showKeywordErrMsg:(msg:string)=>dispatch(showKeywordErrMsg(msg))
   }
 }
