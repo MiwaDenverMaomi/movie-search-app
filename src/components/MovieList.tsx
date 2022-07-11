@@ -6,12 +6,7 @@ import { RootStates } from '../types';
 export const MovieList = ({ result, resultErr }: Props) => {
 
   return (
-    <div>MovieList
-      {result?.map((movie: MovieData) =>
-<MovieListItem key={movie.imdbID} movie={movie} />)}
-      <div>Result Err:{resultErr ? resultErr : ''}</div>
-
-    </div>
+    <div>MovieList</div>
   )
 }
 
