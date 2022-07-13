@@ -4,15 +4,17 @@ import MovieListItem from './MovieListItem';
 import { MovieData } from '../types/Search';
 import { RootStates } from '../types';
 import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
 import store from '../store';
+
 export const MovieList = ({ result, resultErr }: Props) => {
 
   return (
-<>
-    <Grid container spacing={5}>{result?.map(item => <MovieListItem key={item.imdbID} movie={item} />)}
+<Container sx={{ py: 8 }} maxWidth="md">
+    <Grid container spacing={3}>{result?.map(item => <MovieListItem key={item.imdbID} movie={item} />)}
     </Grid>
     <div>{resultErr}</div>
-</>
+</Container>
 
   )
 }

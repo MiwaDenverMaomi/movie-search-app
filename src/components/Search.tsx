@@ -8,8 +8,10 @@ import { validRequired } from '../functions';
 import { RootStates, RootActions } from '../types';
 import { SearchStates } from '../types/Search';
 import { MovieData } from '../types/Search'
-import { Container, Box, InputBase, Button,Typography } from '@material-ui/core';
+import { Container, Box, InputBase, Typography } from '@material-ui/core';
+import {Button} from '@mui/material';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import {lightBlue} from '@mui/material/colors';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,8 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
       bottom: 0
     },
     buttonSearch: {
-      marginLeft: 5,
-      backgroundColor: 'white'
+      marginLeft: '10%',
     },
     inputRoot: {
       color: 'inherit',
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 1),
+      backgroundColor: 'white',
       // vertical padding + font size from searchIcon
       // paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       transition: theme.transitions.create('width'),
@@ -60,6 +62,7 @@ export const Search = ({ keyword, keywordErr, inputKeyword,  showKeywordErrMsg,s
   };
   console.log(keyword);
   return (
+    <>
       <Box className={classes.box}>
         <InputBase
           classes={{
@@ -71,9 +74,10 @@ export const Search = ({ keyword, keywordErr, inputKeyword,  showKeywordErrMsg,s
           value={keyword}
           onChange={e => inputKeyword(e.target.value)}
         />
-        <Button className={classes.buttonSearch} onClick={handleClickSearch}>Search</Button>
+        <Button variant="contained" sx={{ml:1}} onClick={handleClickSearch}>Search</Button>
         <Typography>{keywordErr}</Typography>
       </Box>
+      </>
   )
 }
 

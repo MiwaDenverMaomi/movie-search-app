@@ -6,10 +6,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-
+import {grey} from '@mui/material/colors';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  appbar:{
+    backgroundColor:`${grey[900]}`
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -22,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 export const Header = () => {
   const classes = useStyles();
   return (
-     <AppBar position="static">
+     <AppBar position="static" className={classes.appbar}>
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
          Movie Search App

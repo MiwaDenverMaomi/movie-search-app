@@ -5,24 +5,25 @@ import { RootStates } from '../types';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
 import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 export const MovieListItem = ({ movie }:any) => {
-  const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
   return (
-      <Card sx={{ width:150  }}>
+     <Grid item xs={12} sm={6} md={4}>
+      <Card sx={{ width:'90%',height: '100%', display: 'flex', flexDirection: 'column' }}>
       <CardMedia
         component="img"
         width="100%"
@@ -30,19 +31,16 @@ export const MovieListItem = ({ movie }:any) => {
         image={movie.Poster}
         alt={movie.Title}
       />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-      </CardActions>
         <CardContent>
-          <Typography variant="h6">Type:{movie.Title}</Typography>
-          <Typography variant="body2">{movie.Year}</Typography>
-          <Typography variant="body2">Type:{movie.Type}
+          <Typography variant="body1"  sx={{fontWeight:'bold'}}>{movie.Title}</Typography>
+          <Typography variant="body2">{movie.Type}/{movie.Year}
           </Typography>
+          <CardActions disableSpacing>
+          <Link href={`https://www.imdb.com/title/${movie.imdbID}/`} target="blank" sx={{textDecoration:'none'}}>Details</Link>
+      </CardActions>
         </CardContent>
     </Card>
+    </Grid>
   )
 }
 
